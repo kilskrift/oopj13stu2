@@ -3,11 +3,33 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 
 public class Game {
+
+    int sticksRemaining;
+
+
     public static void main (String[] arg) {
 
+        Game nm = new Game( Integer.parseInt(arg[0]) ); //TODO: error handling if no args given
+
+
+
+    }
+
+    public Game( int sticksToStartWith ) {
+
         // Läs in antal stickor från första argumentet
-        int x = Integer.parseInt(arg[0]);
-        System.out.println("The square of "+x+" is "+x*x);
+        sticksRemaining = sticksToStartWith;
+
+        System.out.println("This game is played with " + sticksRemaining + " sticks.");
+    }
+
+
+}
+
+
+/*
+
+
 
         // Läs in antal stickor från stdin
         Reader r = new InputStreamReader(System.in);
@@ -29,9 +51,4 @@ public class Game {
 
         System.out.println("The square of "+y+" is "+y*y);
 
-    }
-
-
-
-
-}
+*/
