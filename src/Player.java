@@ -8,8 +8,6 @@ public abstract class Player {
 
     public Player( String myName ) {
         playerName = myName;
-
-        System.out.println("Player added: " + playerName );
     }
 
     // getter for playerName

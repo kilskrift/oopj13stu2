@@ -1,6 +1,7 @@
 package oopj13stu2;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import oopj13stu2.*;
 
@@ -21,12 +22,15 @@ public class NmGame {
         players.add( new BotPlayer( "Computer 1") );
         //players.add( new BotPlayer( "Computer 2") );
         players.add( new HumanPlayer( "kgm") );
-
     }
 
     private void printGreeting() {
+
         System.out.println("Welcome to Nm, this game is played with " + sticksRemaining + " matches.");
-        // TODO: move printing player # and name here, remove from Player constructor.
+
+        Iterator<Player> p = players.iterator();
+        int i = 1;
+        while( p.hasNext() ) System.out.println("Player " + i + ": " + p.next().getPlayerName() );
     }
 
     public void play() {
@@ -63,11 +67,13 @@ public class NmGame {
         try {
             sticksFromArguments = Integer.parseInt( arg[0] );
         }
-        catch (ArrayIndexOutOfBoundsException e)            {
+        //catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {  // only java 7 used
+        catch (ArrayIndexOutOfBoundsException e ) {
             // default sticksFromArguments used
         }
+        catch (NumberFormatException e) {} // java 6
 
-        oopj13stu2.NmGame nm = new oopj13stu2.NmGame( sticksFromArguments );
+        NmGame nm = new NmGame( sticksFromArguments );
 
         nm.play();
 
