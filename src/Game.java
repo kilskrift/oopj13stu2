@@ -1,29 +1,60 @@
+package oopj13stu2;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
+
+import oopj13stu2.*;
 
 public class Game {
 
+    int playerTurnsElapsed;
     int sticksRemaining;
-
-
-    public static void main (String[] arg) {
-
-        Game nm = new Game( Integer.parseInt(arg[0]) ); //TODO: error handling if no args given
-
-
-
-    }
+    ArrayList<Player> players;
 
     public Game( int sticksToStartWith ) {
 
+        playerTurnsElapsed = 0;
+
         // Läs in antal stickor från första argumentet
         sticksRemaining = sticksToStartWith;
+        System.out.println("This game is played with " + sticksRemaining + " sticks."); //DEBUG
 
-        System.out.println("This game is played with " + sticksRemaining + " sticks.");
+        // Create Player objects and populate players list
+        players = new ArrayList<Player>();
+        players.add( new BotPlayer() );
+        players.add( new BotPlayer() );
     }
 
+    public void play() {
 
+        // play the game until there's only one stick left to pick, if so the player in turn loses
+        while( sticksRemaining > 1 ) {
+
+           Player phasingPlayer = players.get( playerTurnsElapsed % players.size() );
+
+           int drawnSticks = phasingPlayer.strategy( sticksRemaining );
+           phasingPlayer.annotation( drawnSticks );
+
+           sticksRemaining -= drawnSticks;
+
+           playerTurnsElapsed += 1;
+
+        }
+        System.out.println("Game over, turn " + playerTurnsElapsed + " sticks left " + sticksRemaining); //DEBUG
+
+    }
+
+    // autorun
+    public static void main (String[] arg) {
+
+        Game nm = new Game( Integer.parseInt( arg[0] ) ); //TODO: error handling if no args given
+
+        nm.play();
+
+
+    }
 }
 
 
