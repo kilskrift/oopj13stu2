@@ -1,8 +1,5 @@
 package oopj13stu2;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.ArrayList;
 
 import oopj13stu2.*;
@@ -29,14 +26,14 @@ public class Game {
 
     }
 
-    private void greeting() {
+    private void printGreeting() {
         System.out.println("Welcome to Nm, this game is played with " + sticksRemaining + " matches.");
         // TODO: move printing player # and name here, remove from Player constructor.
     }
 
     public void play() {
 
-        greeting();
+        printGreeting();
 
         // play the game until there's only one stick left to pick, if so the player in turn loses
         while( sticksRemaining > 1 ) {
@@ -53,7 +50,10 @@ public class Game {
 
         }
 
-        System.out.println("Game over, turn " + playerTurnsElapsed + " sticks left " + sticksRemaining); //DEBUG
+        System.out.println("Game over after " + playerTurnsElapsed + " turns, " +
+                players.get( playerTurnsElapsed % players.size() ).getPlayerName() + " loses, " +
+                players.get( (playerTurnsElapsed+1) % players.size() ).getPlayerName() + " wins." );
+
 
     }
 
