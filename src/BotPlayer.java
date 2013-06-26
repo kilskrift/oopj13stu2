@@ -8,15 +8,9 @@ public class BotPlayer extends Player {
         super( myName );
     }
 
-
     @Override
     int strategy( int sticks ) {
         return 1;
-    }
-
-    @Override
-    void annotation( int sticks ) {
-
     }
 
 }

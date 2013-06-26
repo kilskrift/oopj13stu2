@@ -19,16 +19,24 @@ public class Game {
 
         // Läs in antal stickor från första argumentet
         sticksRemaining = sticksToStartWith;
-        System.out.println("This game is played with " + sticksRemaining + " sticks."); //DEBUG
 
         // Create Player objects and populate players list
         players = new ArrayList<Player>();
 
         players.add( new BotPlayer( "Computer 1") );
         players.add( new BotPlayer( "Computer 2") );
+
+
+    }
+
+    private void greeting() {
+        System.out.println("Welcome to Nm, this game is played with " + sticksRemaining + " matches.");
+        // TODO: move printing player # and name here, remove from Player constructor.
     }
 
     public void play() {
+
+        greeting();
 
         // play the game until there's only one stick left to pick, if so the player in turn loses
         while( sticksRemaining > 1 ) {
@@ -36,9 +44,10 @@ public class Game {
            Player phasingPlayer = players.get( playerTurnsElapsed % players.size() );
 
            int drawnSticks = phasingPlayer.strategy( sticksRemaining );
-           phasingPlayer.annotation( drawnSticks );
+           System.out.println( phasingPlayer.getPlayerName() + " removes " + drawnSticks + " matches." );
 
            sticksRemaining -= drawnSticks;
+           System.out.println( "Remaining matches: " + sticksRemaining );
 
            playerTurnsElapsed += 1;
 

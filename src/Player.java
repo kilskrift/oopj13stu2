@@ -12,11 +12,12 @@ public abstract class Player {
         System.out.println("Player added: " + playerName );
     }
 
+    // getter for playerName
+    public String getPlayerName() {
+        return playerName;
+    }
+
     // devise how many sticks to pick in a move, give the current number of sticks in the game
     abstract int strategy( int sticks );
-
-    // log outcome of the move to stdout
-    abstract void annotation( int sticks);
-
 }
 
