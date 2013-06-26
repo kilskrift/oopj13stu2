@@ -24,8 +24,8 @@ public class Game {
         players = new ArrayList<Player>();
 
         players.add( new BotPlayer( "Computer 1") );
-        players.add( new BotPlayer( "Computer 2") );
-
+      //  players.add( new BotPlayer( "Computer 2") );
+        players.add( new HumanPlayer( "kgm") );
 
     }
 
@@ -52,6 +52,7 @@ public class Game {
            playerTurnsElapsed += 1;
 
         }
+
         System.out.println("Game over, turn " + playerTurnsElapsed + " sticks left " + sticksRemaining); //DEBUG
 
     }
@@ -66,30 +67,3 @@ public class Game {
 
     }
 }
-
-
-/*
-
-
-
-        // Läs in antal stickor från stdin
-        Reader r = new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(r);
-
-        int y = 1234567;
-        try {
-            System.out.println("Enter number of sticks to pick: ");
-            String s = br.readLine();
-            y = Integer.parseInt(s);
-        }
-        catch (NumberFormatException e) {
-            // If the format is bad use the value 1234567 instead
-        }
-        catch (Exception e) {
-            throw new RuntimeException(e);
-            // Any other type of exception is simply passed on
-        }
-
-        System.out.println("The square of "+y+" is "+y*y);
-
-*/
