@@ -23,8 +23,9 @@ public class Game {
 
         // Create Player objects and populate players list
         players = new ArrayList<Player>();
-        players.add( new BotPlayer() );
-        players.add( new BotPlayer() );
+
+        players.add( new BotPlayer( "Computer 1") );
+        players.add( new BotPlayer( "Computer 2") );
     }
 
     public void play() {
