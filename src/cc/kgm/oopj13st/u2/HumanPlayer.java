@@ -1,6 +1,4 @@
-package oopj13stu2;
-
-import oopj13stu2.*;
+package cc.kgm.oopj13st.u2;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -21,7 +19,7 @@ public class HumanPlayer extends Player {
         int pulledSticks;
 
         try {
-            System.out.print("Your move (there are " + availableSticks + " matches). >");
+            System.out.print("Your move (there are " + availableSticks + " matches) $>");
             String s = br.readLine();
             pulledSticks = Integer.parseInt(s);
         }

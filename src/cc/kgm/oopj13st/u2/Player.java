@@ -1,6 +1,4 @@
-package oopj13stu2;
-
-import oopj13stu2.*;
+package cc.kgm.oopj13st.u2;
 
 public abstract class Player {
 

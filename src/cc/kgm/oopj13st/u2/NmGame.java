@@ -1,9 +1,13 @@
-package oopj13stu2;
+/*
+    Inlämningsuppgift 2 Objektorienterad programmering med Java sommaren 2013
+    Kristian Grossman-Madsen
+    https://github.com/kilskrift/oopj13stu2.git
+ */
+
+package cc.kgm.oopj13st.u2;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import oopj13stu2.*;
 
 public class NmGame {
 
@@ -67,16 +71,17 @@ public class NmGame {
         try {
             sticksFromArguments = Integer.parseInt( arg[0] );
         }
-        //catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {  // only java 7 used
+        //catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {  // only line of java 7 used
         catch (ArrayIndexOutOfBoundsException e ) {
             // default sticksFromArguments used
         }
-        catch (NumberFormatException e) {} // java 6
+        catch (NumberFormatException e) {  // java 6
+            // default sticksFromArguments used
+        }
 
         NmGame nm = new NmGame( sticksFromArguments );
 
+        // start game
         nm.play();
-
-
     }
 }
