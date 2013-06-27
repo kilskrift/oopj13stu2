@@ -2,6 +2,9 @@
     Inlämningsuppgift 2 Objektorienterad programmering med Java sommaren 2013
     Kristian Grossman-Madsen
     https://github.com/kilskrift/oopj13stu2.git
+
+    See report.txt for a guide to the code, and README for build instructions.
+    You can reach me at 0707-793346 or kgm@kgm.cc if you need to. Jag talar svenska :)
  */
 
 package cc.kgm.oopj13st.u2;
@@ -45,7 +48,7 @@ public class NmGame {
         // play the game until there's only one stick left to pick, if so the player in turn loses
         while( sticksRemaining > 1 ) {
 
-           Player phasingPlayer = players.get( playerTurnsElapsed % players.size() );
+           Player phasingPlayer = players.get( playerTurnsElapsed % players.size() ); // 0..n-1, if n players
 
            int drawnSticks = phasingPlayer.strategy( sticksRemaining );
            System.out.println( phasingPlayer.getPlayerName() + " removes " + drawnSticks + " matches." );

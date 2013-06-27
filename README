@@ -1,4 +1,10 @@
-Instruktioner för att bygga och/eller köra uppgiften:
+/*
+    Inlämningsuppgift 2 Objektorienterad programmering med Java sommaren 2013
+    Kristian Grossman-Madsen
+    https://github.com/kilskrift/oopj13stu2.git
+ */
+
+Instruktioner för att bygga och/eller köra uppgiften (testad med java 1.6):
 
 Enklast är att köra jar-filen direkt med
 $ java -jar uppgift2.jar <matches>

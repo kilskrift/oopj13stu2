@@ -1,0 +1,88 @@
+/*
+    Inlämningsuppgift 2 Objektorienterad programmering med Java sommaren 2013
+    Kristian Grossman-Madsen
+    https://github.com/kilskrift/oopj13stu2.git
+
+ */
+
+
+Till denna uppgift förväntar jag mig en rapport enligt beskrivningen på uppgiftssidan. Olika designbeslut ska redovisas.
+
+Varje uppgift ska redovisas med rapport (detta gäller särskilt uppgift 2 och senare). Jag ser helst att rapporten är i PDF-format.
+
+Beskriv hur man gör för att köra ditt program.
+
+Se README-filen för instruktion för hur man bygger & kör programmet.
+
+tl;dr
+$ java -jar uppgift2.jar <matches>
+
+Redovisa också alla aspekter av uppgiften som du upplevde som svåra eller som krävde särskild uppmärksamhet.
+
+Från git-loggen ser jag att jag hade två stora hinder:
+1. att börja med uppgiften i god tid
+2. att få grepp om hur sökvägen till klasser i ett paket fungerar, samt att köra filen från commandline.
+
+b10f33c	Today 02:04	Kristian G. Madsen	Finally fixed package path. Thank God for IDE refactoring.
+ffa0f3e	Today 01:50	Kristian G. Madsen	Caught non-numeric argument error.
+e90e47b	Today 01:33	Kristian G. Madsen	Error handling of left out command line argument for matches.
+ac9601f	Today 01:19	Kristian G. Madsen	Game functionally complete. Todo: fix output to conform with specification by example.
+b635630	Today 01:13	Kristian G. Madsen	HumanPlayer functional.
+edc58f3	Yesterday 23:27	Kristian G. Madsen	Added greeting method, game loop printouts in line with specification.
+dc1cc96	Yesterday 23:13	Kristian G. Madsen	Added Player name attribute and call to superclass constructor in BotPlayer.
+821f4fb	Yesterday 22:51	Kristian G. Madsen	BotPlayer strategy placeholder implemented.
+ac3162f	Yesterday 21:45	Kristian G. Madsen	Refactored setting initial number of sticks to Game constructor.
+7c4e440	Yesterday 20:34	Kristian G. Madsen	Added example code for reading from stdin.
+bd22e19	Yesterday 20:22	Kristian G. Madsen	Added example code for getting command line arguments.
+
+Själva programmet var ganska enkelt att få ihop. Mina första tankar om struktur stämde bra överens med vad som också
+föreslogs under Implementation i uppgiften.
+
+Spelet startas från den main()-metod som finns i Game-klassen. Där skapas en instans av spelet som i sin tur håller
+reda på två (eller flera) spelarobjekt, samt initieras med det antal stickor som angetts på kommandoraden.
+
+Jag började med att klippa in koden från de två exemplena i en "HelloWorld" för att hela tiden ha något som gick att
+bygga, och gick sedan vidare därifrån med fler klasser & funktioner.
+
+Titta gärna i mina commits på github för att se hur koden såg ut i respektive "steg":
+
+https://github.com/kilskrift/oopj13stu2/commits/master
+
+Därefter flyttade jag gradivis in den givna exempelkoden i respektive spelarklass. Jag började med robotspelaren
+eftersom den inte läste in något input eller behövde bry sig om egentlig felhantering, länge var dess strategi att dra
+en sticka åt gången :) Den böts senare ut mot att dra 1 <= n < (stickor/2) stycken stickor.
+
+Jag började med två abstrakta metoder i spelar-klassen, varav den ena var tänkt att ansvara för strategi (dvs. hur
+många stickor som skall dras), den andra för att beskriva draget som gjorts. Det visade sig senare att den andra
+klassen inte behövdes, utan jag sköter löpande utskrifter från loopen i play-metoden i Game-objektet.
+
+Människospelaren har lite mer felhantering, för att hantera om man skriver in dels tal som bryter mot spelets regler,
+som jag kollar i en egen metod rulesCheck(), samt fångar exceptions som kastas om man skriver ett "icke-numeriskt tal".
+
+Uppgiften passade bra att bygga som en emergent design, jag stötte inte på några tvärstopp och behövde inte slänga nån
+kod för att börja om, förutom annoteringsfunktion som jag aldrig egentligen började på.
+
+Jag har använt IntelliJ IDEA som utvecklingsmiljö. Det har fungerat bra, även om jag fortfarande refaktorerar sånt som
+variabelnamn "för hand", och jag genererar/kompletterar relativt lite kod automatiskt. Det var trevligt att kunna
+flytta filer till rätt sökväg för paketet (som jag definitivt skall ge ett mer lättstavat namn nästa gång!) utan att
+behöva bekymra sig om att flytta filerna i git för hand.
+
+
+Exempel på vad som bör tas upp:
+Var i programmet implementeras spelets regler: var avgörs det om ett drag är tillåtet, eller att någon har vunnit?
+
+Huvudlogiken för spelloopen ligger i NmGame.play(), medan logiken för att kolla ett drag finns inbyggd i algoritmen
+för robotspelaren, respektive kollas med exceptions i HumanPlayer.strategy() och i den privata rulesCheck()-metoden i
+samma klass.
+
+Gränssnitten för de olika klasserna. Notera att det inte bara handlar om att tala om vilka metoder som definieras.
+Du bör även beskriva förutsättningar för indata eller andra antaganden om hur metoder ska anropas.
+
+Jag har inga enhetstest för koden, utan litar till att jag upptäcker fel vid acceptanstest mot exemplet i uppgiften.
+Det finns lite "perimeterförsvar" i att t.ex. input från kommandorad & stdin kollas extra, men i övrigt litar de oilka
+metoderna på att de får vettig data från resten av programmet.
+
+En kul uppgift, och det var inte så jobbigt att komma igång med att koda Java igen som jag kanske dragit mig för att
+upptäcka. Nu skall jag titta på inlämningsuppgift ett med.
+
+I natten, Kristian G. Madsen
