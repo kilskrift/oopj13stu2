@@ -1,0 +1,15 @@
+Instruktioner för att bygga och/eller köra uppgiften:
+
+Enklast är att köra jar-filen direkt med
+$ java -jar uppgift2.jar <matches>
+
+eller gå till src-mappen, bygga klasserna & köra dem därifrån
+$ cd src
+$ javac cc/kgm/oopj13st/u2/*.java
+$ java cc.kgm.oopj13st.u2.NmGame <matches>
+
+För att bygga en ny jarfil från de kompilerade klasserna gör du
+$ cd src
+$ jar cfe uppgift2.jar cc.kgm.oopj13st.u2.NmGame cc/kgm/oopj13st/u2/*
+
+/kgm
