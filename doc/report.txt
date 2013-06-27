@@ -5,24 +5,17 @@
 
  */
 
-
-Till denna uppgift förväntar jag mig en rapport enligt beskrivningen på uppgiftssidan. Olika designbeslut ska redovisas.
-
-Varje uppgift ska redovisas med rapport (detta gäller särskilt uppgift 2 och senare). Jag ser helst att rapporten är i PDF-format.
-
-Beskriv hur man gör för att köra ditt program.
-
-Se README-filen för instruktion för hur man bygger & kör programmet.
-
+(Se README-filen för instruktion för hur man bygger & kör programmet.)
 tl;dr
 $ java -jar uppgift2.jar <matches>
 
-Redovisa också alla aspekter av uppgiften som du upplevde som svåra eller som krävde särskild uppmärksamhet.
-
-Från git-loggen ser jag att jag hade två stora hinder:
-1. att börja med uppgiften i god tid
+Själva programmet var ganska enkelt att få ihop. Mina första tankar om struktur stämde bra överens med vad som också
+föreslogs under Implementation i uppgiften. Från git-loggen ser jag dock att jag hade två stora hinder under uppgiften:
+1. att börja med uppgiften i god tid -- här krävs definitivt bättring till nästa uppgift.
 2. att få grepp om hur sökvägen till klasser i ett paket fungerar, samt att köra filen från commandline.
 
+fe4d539	4 minutes ago	Kristian G. Madsen	Added report.txt, and my name to all source files.
+b10f33c	Today 02:04	Kristian G. Madsen	Finally fixed package path. Thank God for IDE refactoring.
 b10f33c	Today 02:04	Kristian G. Madsen	Finally fixed package path. Thank God for IDE refactoring.
 ffa0f3e	Today 01:50	Kristian G. Madsen	Caught non-numeric argument error.
 e90e47b	Today 01:33	Kristian G. Madsen	Error handling of left out command line argument for matches.
@@ -35,8 +28,7 @@ ac3162f	Yesterday 21:45	Kristian G. Madsen	Refactored setting initial number of 
 7c4e440	Yesterday 20:34	Kristian G. Madsen	Added example code for reading from stdin.
 bd22e19	Yesterday 20:22	Kristian G. Madsen	Added example code for getting command line arguments.
 
-Själva programmet var ganska enkelt att få ihop. Mina första tankar om struktur stämde bra överens med vad som också
-föreslogs under Implementation i uppgiften.
+Vad gäller min implementation ligger den mesta logiken i klasserna NmGame, BotPlayer och HumanPlayer.
 
 Spelet startas från den main()-metod som finns i Game-klassen. Där skapas en instans av spelet som i sin tur håller
 reda på två (eller flera) spelarobjekt, samt initieras med det antal stickor som angetts på kommandoraden.
@@ -67,22 +59,17 @@ variabelnamn "för hand", och jag genererar/kompletterar relativt lite kod autom
 flytta filer till rätt sökväg för paketet (som jag definitivt skall ge ett mer lättstavat namn nästa gång!) utan att
 behöva bekymra sig om att flytta filerna i git för hand.
 
-
-Exempel på vad som bör tas upp:
-Var i programmet implementeras spelets regler: var avgörs det om ett drag är tillåtet, eller att någon har vunnit?
-
 Huvudlogiken för spelloopen ligger i NmGame.play(), medan logiken för att kolla ett drag finns inbyggd i algoritmen
 för robotspelaren, respektive kollas med exceptions i HumanPlayer.strategy() och i den privata rulesCheck()-metoden i
 samma klass.
 
-Gränssnitten för de olika klasserna. Notera att det inte bara handlar om att tala om vilka metoder som definieras.
-Du bör även beskriva förutsättningar för indata eller andra antaganden om hur metoder ska anropas.
+Vad gäller gränssnitten för de olika klasserna & förutsättningar för indata, antaganden om hur metoder anropas så valde
+jag att inte skriva enhetstester, utan litar till att jag upptäcker fel vid "acceptanstest" mot exemplet i uppgiften.
 
-Jag har inga enhetstest för koden, utan litar till att jag upptäcker fel vid acceptanstest mot exemplet i uppgiften.
 Det finns lite "perimeterförsvar" i att t.ex. input från kommandorad & stdin kollas extra, men i övrigt litar de oilka
 metoderna på att de får vettig data från resten av programmet.
 
-En kul uppgift, och det var inte så jobbigt att komma igång med att koda Java igen som jag kanske dragit mig för att
-upptäcka. Nu skall jag titta på inlämningsuppgift ett med.
+Överlag en kul uppgift, och det var inte så jobbigt att komma igång med att koda Java igen som jag kanske dragit mig
+för att upptäcka.
 
 I natten, Kristian G. Madsen
