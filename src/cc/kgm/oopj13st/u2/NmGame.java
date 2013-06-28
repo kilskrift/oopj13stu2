@@ -37,7 +37,7 @@ public class NmGame {
 
         Iterator<Player> p = players.iterator();
         int i = 1;
-        while( p.hasNext() ) System.out.println("Player " + i + ": " + p.next().getPlayerName() );
+        while( p.hasNext() ) System.out.println("Player " + i++ + ": " + p.next().getPlayerName() );
     }
 
     public void play() {
